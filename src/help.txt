@@ -1,0 +1,10 @@
+start:
+
+npm start
+
+code on:
+App.js
+
+style on:
+Style.js
+

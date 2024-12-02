@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling of the whole page */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.todo-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 20vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+.todo-input {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Ensure full-width container */
+    height: 91%;
+    margin-bottom: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-input input {
+    font-size: 1rem;          /* Customize font size */
+    color: #333;              /* Dark text color */
+}
+.todo-input input::placeholder {
+    color: #aaa;              /* Lighter color for placeholder text */
+    font-style: italic;       /* Italicize placeholder */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.custom-textbox {
+    border: 2px solid #333; /* Add border */
+    border-radius: 0; /* Remove rounded edges */
+    padding: 10px; /* Add padding */
+    font-size: 1rem; /* Set font size */
+    flex: 1; /* Make the input take most of the available space */
+}
+.custom-textbox:focus {
+    border-color: #000000;     /* Highlight border on focus */
+    background-color: #ffffff; /* Background color */
+    outline: none;             /* Remove default outline */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add glowing effect */
+}
+.custom-textbox::placeholder {
+    color: #363636;               /* Placeholder text color */
+    font-style: italic;        /* Placeholder font style */
 }
 
-.App-link {
-  color: #61dafb;
+.my_button{
+    all: unset; /* Reset all default styles */
+    flex-shrink: 0; /* Prevent shrinking */
+    border: 2px solid #333; /* Dark border */
+    border-radius: 0; /* Remove rounded corners */
+    padding: 0; /* Remove padding */
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    width: 80px; /* Fixed width */
+    height: 100%; /* Match the parent's height */
+    display: flex; /* Ensure text is centered */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    transition: background-color 0.3s ease; /* Hover effect */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.my_button:hover {
+    background-color: #5f5b8d; /* Change background on hover */
+    box-shadow: 0 0 5px rgba(122, 126, 129, 0.5); /* Add glow */
+    border: 2px solid #333; /* Dark border */
+}
+
+.my_container {
+    all: unset;
+    padding: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150vh;
+    height: 60vh;
+    margin-top: 2px;
+    overflow: auto; /* Only show scrollbars when necessary */
+    display: flex;
+    flex-direction: column;
+}
+.list-group {
+    display: flex;
+    flex-direction: column-reverse; /* Reverse stacking */
+    flex-grow: 1; /* Allow the list to grow inside container */
+}
+
+
+
+.item-text {
+    margin: 0; /* Remove extra space */
+    flex-grow: 1; /* Allow text to take available space */
+    text-align: left; /* Align text to the left */
+    padding-left: 10px; /* Optional: Add some spacing from the left */
+    overflow: hidden; /* Ensure long text doesn’t overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for truncated text */
+}
+
+.ladder-item {
+    display: flex;
+    justify-content: space-between; /* Align text and delete button */
+    align-items: center; /* Center vertically */
+    border: 1.5px solid #000; /* Optional: Add border */
+    background-color: rgb(224, 222, 222); /* Light gray background */
+    padding: 0; /* No padding */
+    height: 40px; /* Fixed height */
+    margin: 0 auto; /* Center horizontally */
+    width: 70%; /* Set a specific width */
+    z-index: 1;
+    position: relative;
+}
+
+
+
+.ladder-item-done {
+    display: flex;
+    justify-content: space-between; /* Align text and delete button */
+    align-items: center; /* Center vertically */
+    border: 1.5px solid #000; /* Optional: Add border */
+    background-color: rgb(224, 222, 222); /* Light gray background */
+    padding: 0; /* No padding */
+    height: 40px; /* Fixed height */
+    margin-bottom: -1.5px; /* Prevent overlap by offsetting */
+    width: 70%;
+    z-index: 3;
+    position: relative;
+}
+
+.ladder-content {
+    all: unset; 
+    display: flex; /* Horizontal alignment */
+    justify-content: space-between; /* Space between text and button */
+    align-items: center; /* Align vertically */
+    height: 100%; /* Match the parent's height */
+    position: sticky;
+    width: 100%; /* Full width */
+}
+
+
+.sticky-bottom {
+    position: sticky; /* Stick to the bottom */
+    bottom: 0; /* Pin to bottom of the parent */
+}
+
+
+
+
+.check_button{
+    flex-shrink: 0; /* Prevent shrinking */
+    border-radius: 0; /* Remove rounded corners */
+    background-color: #f4f4f4; 
+    color: #f4f4f4; /* White text */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    width: 16px; /* Fixed width */
+    height: 27px; /* Match the parent's height */
+    display: flex; /* Ensure text is centered */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    transition: background-color 0.3s ease; /* Hover effect */
+    border: 1.5px solid #333; /* Dark border */
+    margin: 3px;
+
+}
+
+
+.check_button:hover {
+
+    background-color: #ffffff; /* Change background on hover */
+    color: #000000; /* White text */
+    box-shadow: 0 0 5px rgba(122, 126, 129, 0.5); /* Add glow */
+    border: 1.5px solid #333; /* Dark border */
+}
+
+
+.pic-sticky {
+    position: sticky;
+    bottom: 2px; 
+    display: flex;
+    align-items: center; /* Center vertically */
+    padding: 5px; /* No padding */
+    width: 200px; /* Fixed height */
+    height: auto;
+    z-index: 2;
+}
+
+
+.pic-unsticky {
+    position: absolute; /* Position relative to the viewport */
+    bottom: 20px; /* Align to the bottom */
+    left: 60px; /* Align to the right corner */
+    padding: 5px;
+    width: 200px;
+    height: auto;
+}
+
+
+.guy-container {
+    position: sticky; /* Make the guy sticky */
+    top: 0; /* Sticks to the top of its parent */
+    z-index: 2; /* Ensure it layers above to-do items */
+    background: white; /* Optional: Background to prevent overlap visibility */
+    text-align: center; /* Center the "guy" horizontally */
+    padding: 10px; /* Optional spacing */
 }
